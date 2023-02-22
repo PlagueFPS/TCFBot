@@ -8,5 +8,17 @@ export const COMMANDS = {
   rarity: '!rarity',
   shortRarity: '!r',
   value: '!value',
-  shortValue: '!v'
+  shortValue: '!v',
+  wiki: '!wiki',
+  tracker: '!tracker',
+  map: '!map',
+  loadout: '!loadout',
+  geo: '!geo',
+  calc: '!calc',
+  progress: '!progress',
+  questAmount: '!qamount',
+  upgradeAmount: '!uamount',
+  craftAmount: '!camount',
+  forgeAmount: '!famount',
+  info: '!info'
 }
