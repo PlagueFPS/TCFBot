@@ -51,7 +51,7 @@ const itemAmountNeeded = (item, neededFor) => {
 }
 
 export const GlobalFunctions = {
-  getItemStat: (client, channel, userstate, message, stat) => {
+  getItemStat: (message, stat) => {
     const item = ItemsData.find(item => {
       const newMessage = message.split(' ')
       const match = newMessage.some(message => item._id.includes(message))
@@ -59,33 +59,33 @@ export const GlobalFunctions = {
       else if (match) return item
       else return
     })
-    const tracker = item && `https://tracker.thecyclefrontier.wiki/item-info/${item._id}`
-    const wiki = item && `https://thecyclefrontier.wiki/wiki/${item.name}`
+    const tracker = item && `tracker.thecyclefrontier.wiki/item-info/${item._id}`
     
     if (item) {
       try {
         switch(stat) {
           case 'price':
-            return client.say(channel, `@${userstate.username}, The Sell Price of a ${item.name} is ${item.price.replace(/\B(?=(\d{3})+(?!\d))/g,",")} Kmarks.`)
+            return `The Sell Price of a ${item.name} is ${item.price.replace(/\B(?=(\d{3})+(?!\d))/g,",")} Kmarks.`
           case 'weight':
-            return client.say(channel, `@${userstate.username}, The Weight of a ${item.name} is ${item.weight.replace(/\B(?=(\d{3})+(?!\d))/g,",")}.`)
+            return `The Weight of a ${item.name} is ${item.weight.replace(/\B(?=(\d{3})+(?!\d))/g,",")}.`
           case 'rarity':
-            return client.say(channel, `@${userstate.username}, The Rarity of a ${item.name} is ${item.rarity}.`)
+            return `The Rarity of a ${item.name} is ${item.rarity}.`
           case 'rep':
-            return client.say(channel, `@${userstate.username}, The Faction Rep of a ${item.name} is ${item.rep.replace(/\B(?=(\d{3})+(?!\d))/g,",")} Rep.`)
+            return `The Faction Rep of a ${item.name} is ${item.rep.replace(/\B(?=(\d{3})+(?!\d))/g,",")} Rep.`
           case 'desc':
-            return client.say(channel, `@${userstate.username}, A ${item.name} ${item.desc}.`)
+            return `A ${item.name} ${item.desc}.`
           case 'value':
-            return client.say(channel, `@${userstate.username}, 
-              The Value Per Weight of a ${item.name} is ${item.valuePerWeight.replace(/\B(?=(\d{3})+(?!\d))/g,",")} Kmarks, and ${calcRepPerWeight(item)} Rep.`)
+            return `The Value Per Weight of a ${item.name} is ${item.valuePerWeight.replace(/\B(?=(\d{3})+(?!\d))/g,",")} Kmarks, and ${calcRepPerWeight(item)} Rep.`
           case 'Quest Amount':
-            return client.say(channel, `@${userstate.username}, You'll need a total of ${itemAmountNeeded(item, 'quests')} ${item.name} for all Quests.`)
+            return `You'll need a total of ${itemAmountNeeded(item, 'quests')} ${item.name} for all Quests.`
           case 'Upgrade Amount':
-            return client.say(channel, `@${userstate.username}, You'll need a total of ${itemAmountNeeded(item, 'upgrades')} ${item.name} for all Quarter Upgrades.`)
+            return `You'll need a total of ${itemAmountNeeded(item, 'upgrades')} ${item.name} for all Quarter Upgrades.`
           case 'Craft Amount':
-            return client.say(channel, `@${userstate.username}, You'll need a total of ${itemAmountNeeded(item, 'crafts')} ${item.name} for all Crafts.`)
+            return `You'll need a total of ${itemAmountNeeded(item, 'crafts')} ${item.name} for all Crafts.`
           case 'Forge Amount':
-            return client.say(channel, `@${userstate.username}, You'll need a total of ${itemAmountNeeded(item, 'forge')} ${item.name} for all Forge Items.`)
+            return `You'll need a total of ${itemAmountNeeded(item, 'forge')} ${item.name} for all Forge Items.`
+          case 'info':
+            return `Find info on ${item.name}(s) here: ${tracker}`
         }
       }
       catch (error) {
@@ -94,16 +94,16 @@ export const GlobalFunctions = {
     }
     else {
       try {
-        client.say(channel, `@${userstate.username}, ${itemError}.`)
+        return itemError
       }
       catch (error) {
         console.log(error)
       }
     }
   },
-  renderLink: (client, channel, userstate, name, link) => {
+  renderLink: (name, link) => {
     try {
-      return client.say(channel, `@${userstate.username}, Here is the link to ${name}: ${link}`)
+      return `Here is the link to ${name}: ${link}`
     }
     catch (error) {
       console.log(error)

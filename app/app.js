@@ -14,9 +14,8 @@ const client = new tmi.Client({
   },
   channels: ['plaguefps']
 })
-client.connect()
+client.connect().catch(console.error)
 client.on('message', (channel, userstate, message, self) => {
-  const formattedMessage = message.toLowerCase()
   if (self) return
-  else bot(client, channel, userstate, formattedMessage)
+  else bot(client, channel, userstate, message)
 })
