@@ -6,7 +6,9 @@ export const bot = (client, channel, userstate, message) => {
   const formattedMessage = message.toLowerCase()
   const [raw, command, argument] = formattedMessage.match(regExpCommand)
   const { response } = COMMANDS[command] || {}
-  const returnString = `@${userstate.username}, ${response(argument)}`
+  
+  if (typeof response !== 'function') return 
 
+  const returnString = `@${userstate.username}, ${response(argument)}`
   return client.say(channel, returnString)
 }

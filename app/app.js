@@ -12,7 +12,7 @@ const client = new tmi.Client({
     username: process.env.BOT_USERNAME,
     password: process.env.OAUTH_TOKEN,
   },
-  channels: ['plaguefps']
+  channels: ['plaguefps', 'k4rnivore']
 })
 client.connect().catch(console.error)
 client.on('message', (channel, userstate, message, self) => {
