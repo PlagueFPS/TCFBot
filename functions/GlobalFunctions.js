@@ -59,6 +59,8 @@ export const GlobalFunctions = {
       else if (match) return item
       else return
     })
+    const tracker = item && `https://tracker.thecyclefrontier.wiki/item-info/${item._id}`
+    const wiki = item && `https://thecyclefrontier.wiki/wiki/${item.name}`
     
     if (item) {
       try {
@@ -84,7 +86,6 @@ export const GlobalFunctions = {
             return client.say(channel, `@${userstate.username}, You'll need a total of ${itemAmountNeeded(item, 'crafts')} ${item.name} for all Crafts.`)
           case 'Forge Amount':
             return client.say(channel, `@${userstate.username}, You'll need a total of ${itemAmountNeeded(item, 'forge')} ${item.name} for all Forge Items.`)
-  
         }
       }
       catch (error) {
@@ -108,32 +109,4 @@ export const GlobalFunctions = {
       console.log(error)
     }
   },
-  getItemInfo: (client, channel, userstate, message) => {
-    const item = ItemsData.find(item => {
-      const newMessage = message.split(' ')
-      const match = newMessage.some(message => item._id.includes(message))
-      if (message.replace(/\s/g, '').includes(item._id)) return item
-      else if (match) return item
-      else return
-    })
-    const tracker = item && `https://tracker.thecyclefrontier.wiki/item-info/${item._id}`
-    const wiki = item && `https://thecyclefrontier.wiki/wiki/${item.name}`
-
-    if (item) {
-      try {
-        return client.say(channel, `@${userstate.username}, Find info on ${item.name}(s) here: ${tracker} or ${wiki.replace(' ', '_')}`)
-      }
-      catch (error) {
-        console.log(error)
-      }
-    }
-    else {
-      try {
-        return client.say(channel, `@${userstate.username}, ${itemError}.`)
-      }
-      catch (error) {
-        console.log(error)
-      }
-    }
-  }
 }

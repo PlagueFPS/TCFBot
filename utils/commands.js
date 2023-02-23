@@ -20,5 +20,5 @@ export const COMMANDS = {
   upgradeAmount: '!uamount',
   craftAmount: '!camount',
   forgeAmount: '!famount',
-  info: '!info'
+  item: '!item',
 }
