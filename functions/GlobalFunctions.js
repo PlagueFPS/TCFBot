@@ -1,8 +1,8 @@
-import ItemsData from '../data/items.json'
-import QuestsData from '../data/quests.json'
-import UpgradesData from '../data/upgrades.json'
-import CraftsData from '../data/crafts.json'
-import ForgeData from '../data/forge.json'
+import ItemsData from '../data/items.json' assert { type: 'json' }
+import QuestsData from '../data/quests.json' assert { type: 'json' }
+import UpgradesData from '../data/upgrades.json' assert { type: 'json' }
+import CraftsData from '../data/crafts.json' assert { type: 'json' }
+import ForgeData from '../data/forge.json' assert { type: 'json' }
 
 const itemError = "Looks like that item doesn't exist. Please check the item name and try again"
 

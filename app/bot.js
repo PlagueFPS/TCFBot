@@ -1,4 +1,4 @@
-import { COMMANDS } from '../utils/commands'
+import { COMMANDS } from '../utils/commands.js'
 
 const regExpCommand = new RegExp(/^!([a-zA-Z0-9]+)(?:\W+)?(.*)?/)
 

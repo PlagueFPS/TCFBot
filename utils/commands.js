@@ -1,4 +1,4 @@
-import { GlobalFunctions } from "../functions/GlobalFunctions"
+import { GlobalFunctions } from "../functions/GlobalFunctions.js"
 
 export const COMMANDS = {
   price: {
