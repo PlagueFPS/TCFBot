@@ -66,5 +66,11 @@ export const COMMANDS = {
   },
   info: {
     response: (message) => GlobalFunctions.getItemStat(message, 'info')
+  },
+  help: {
+    response: () => GlobalFunctions.getHelp()
+  },
+  botinfo: {
+    response: () => GlobalFunctions.getBotInfo()
   }
 }

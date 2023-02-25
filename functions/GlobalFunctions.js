@@ -5,6 +5,7 @@ import CraftsData from '../data/crafts.json' assert { type: 'json' }
 import ForgeData from '../data/forge.json' assert { type: 'json' }
 
 const itemError = "Looks like that item doesn't exist. Please check the item name and try again"
+const botSite = "https://main--plaguetcfbot.netlify.app"
 
 const calcRepPerWeight = (item) => {
   const repPerWeight = parseInt(item.rep) / parseInt(item.weight)
@@ -59,7 +60,7 @@ export const GlobalFunctions = {
       else if (match) return item
       else return
     })
-    const tracker = item && `tracker.thecyclefrontier.wiki/item-info/${item._id}`
+    const tracker = item && `https://tracker.thecyclefrontier.wiki/item-info/${item._id}`
     
     if (item) {
       try {
@@ -109,4 +110,10 @@ export const GlobalFunctions = {
       console.log(error)
     }
   },
+  getHelp: () => {
+    return `You can find a list of commands here: ${botSite}`
+  },
+  getBotInfo: () => {
+    return `You can find out how to add the bot to your channel/server here: ${botSite}`
+  }
 }
