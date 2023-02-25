@@ -7,7 +7,7 @@ import ForgeData from '../data/forge.json' assert { type: 'json' }
 const itemError = "Looks like that item doesn't exist. Please check the item name and try again"
 const botSite = "https://main--plaguetcfbot.netlify.app"
 
-const calcRepPerWeight = (item) => {
+export const calcRepPerWeight = (item) => {
   const repPerWeight = parseInt(item.rep) / parseInt(item.weight)
   return repPerWeight.toString()
 }
