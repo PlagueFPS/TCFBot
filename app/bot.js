@@ -1,8 +1,6 @@
 import ItemsData from '../data/items.json' assert { type: 'json' }
 import { COMMANDS } from '../utils/commands.js'
-import { EmbedBuilder } from '@discordjs/builders'
-import { calcRepPerWeight } from '../functions/GlobalFunctions.js'
-import { COLORS } from '../utils/colors.js'
+import { ItemEmbed } from '../utils/embeds.js'
 
 const regExpCommand = new RegExp(/^!([a-zA-Z0-9]+)(?:\W+)?(.*)?/)
 
@@ -22,51 +20,9 @@ export const bot = (client, channel, userstate, message, msg) => {
         else if (match) return item
         else return
       })
-      const date = new Date().toISOString()
-      const embed = new EmbedBuilder()
-        .setColor(COLORS[item.rarity])
-        .setTitle(item.name)
-        .setURL(`https://tracker.thecyclefrontier.wiki/item-info/${item._id}`)
-        .setDescription(item.desc)
-        .setThumbnail(`https://tracker.thecyclefrontier.wiki/images/${item._id}.png`)
-        .addFields([
-          {
-            name: 'Sell Price',
-            value: item.price,
-            inline: true,
-          },
-          {
-            name: 'Weight',
-            value: item.weight,
-            inline: true,
-          },
-          {
-            name: 'Faction Rep',
-            value: item.rep,
-            inline: true,
-          },
-          {
-            name: 'Value/Weight',
-            value: item.valuePerWeight,
-            inline: true,
-          },
-          {
-            name: 'Faction Rep/Weight',
-            value: calcRepPerWeight(item),
-            inline: true,
-          },
-          {
-            name: 'Rarity',
-            value: item.rarity,
-            inline: true,
-          }
-        ])
-        .setTimestamp(new Date(date))
-        .setFooter({
-          text: 'Provided by PlagueFPS'
-        })
+      const itemEmbed = ItemEmbed(item)
 
-      msg.reply({ embeds: [embed] })
+      msg.reply({ embeds: [itemEmbed] })
     }
     else {
       const returnString = `@${userstate.username}, ${response(argument)}`
