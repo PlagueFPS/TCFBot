@@ -1,15 +1,8 @@
 const { EmbedBuilder } = require('discord.js')
-const COLORS = require('./colors')
-// import { EmbedBuilder } from "discord.js";
-// import { calcRepPerWeight } from "../functions/GlobalFunctions.js";
-// import { COLORS } from "./colors.js";
+const COLORS = require('../utils/colors')
+const calcRepPerWeight = require('../functions/calcRepPerWeight')
 
 const date = new Date().toISOString()
-
-const calcRepPerWeight = (item) => {
-  const repPerWeight = parseInt(item.rep) / parseInt(item.weight)
-  return repPerWeight.toString()
-}
 
 const ItemEmbed = (item) => new EmbedBuilder()
   .setColor(COLORS[item.rarity])

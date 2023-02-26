@@ -1,77 +1,80 @@
-const { GlobalFunctions } = require('../functions/GlobalFunctions')
+const getItemStat = require('../functions/getItemStat')
+const renderLink = require('../functions/renderLink')
+const getHelp = require('../functions/getHelp')
+const getBotInfo = require('../functions/getBotInfo')
 
 const COMMANDS = {
   price: {
-    response: (message) => GlobalFunctions.getItemStat(message, 'price')
+    response: (message) => getItemStat(message, 'price')
   },
   p: {
-    response: (message) => GlobalFunctions.getItemStat(message, 'price')
+    response: (message) => getItemStat(message, 'price')
   },
   weight: {
-    response: (message) => GlobalFunctions.getItemStat(message, 'weight')
+    response: (message) => getItemStat(message, 'weight')
   },
   w: {
-    response: (message) => GlobalFunctions.getItemStat(message, 'weight')
+    response: (message) => getItemStat(message, 'weight')
   },
   factionrep: {
-    response: (message) => GlobalFunctions.getItemStat(message, 'rep')
+    response: (message) => getItemStat(message, 'rep')
   },
   rep: {
-    response: (message) => GlobalFunctions.getItemStat(message, 'rep')
+    response: (message) => getItemStat(message, 'rep')
   },
   rarity: {
-    response: (message) => GlobalFunctions.getItemStat(message, 'rarity')
+    response: (message) => getItemStat(message, 'rarity')
   },
   r: {
-    response: (message) => GlobalFunctions.getItemStat(message, 'rarity')
+    response: (message) => getItemStat(message, 'rarity')
   },
   value: {
-    response: (message) => GlobalFunctions.getItemStat(message, 'value')
+    response: (message) => getItemStat(message, 'value')
   },
   v: {
-    response: (message) => GlobalFunctions.getItemStat(message, 'value')
+    response: (message) => getItemStat(message, 'value')
   },
   wiki: {
-    response: () => GlobalFunctions.renderLink('Official Wiki', 'https://thecyclefrontier.wiki/wiki/Main_Page')
+    response: () => renderLink('Official Wiki', 'https://thecyclefrontier.wiki/wiki/Main_Page')
   },
   map: {
-    response: () => GlobalFunctions.renderLink('Wiki Interactive Map', 'https://tools.thecyclefrontier.wiki/map')
+    response: () => renderLink('Wiki Interactive Map', 'https://tools.thecyclefrontier.wiki/map')
   },
   tracker: {
-    response: () => GlobalFunctions.renderLink('Wiki Item Tracker', 'https://tracker.thecyclefrontier.wiki')
+    response: () => renderLink('Wiki Item Tracker', 'https://tracker.thecyclefrontier.wiki')
   },
   loadout: {
-    response: () => GlobalFunctions.renderLink('Wiki Loadout Generator', 'https://tools.thecyclefrontier.wiki/loadout')
+    response: () => renderLink('Wiki Loadout Generator', 'https://tools.thecyclefrontier.wiki/loadout')
   },
   calc: {
-    response: () => GlobalFunctions.renderLink('Wiki Weapon Calculator', 'https://tools.thecyclefrontier.wiki/calculator')
+    response: () => renderLink('Wiki Weapon Calculator', 'https://tools.thecyclefrontier.wiki/calculator')
   },
   geo: {
-    response: () => GlobalFunctions.renderLink('Wiki Fortuna Guesser', 'https://fortunaguessr.com')
+    response: () => renderLink('Wiki Fortuna Guesser', 'https://fortunaguessr.com')
   },
   progress: {
-    response: () => GlobalFunctions.renderLink('Wiki Progress Tracker', 'https://tools.thecyclefrontier.wiki/progress')
+    response: () => renderLink('Wiki Progress Tracker', 'https://tools.thecyclefrontier.wiki/progress')
   },
   qamount: {
-    response: (message) => GlobalFunctions.getItemStat(message, 'Quest Amount')
+    response: (message) => getItemStat(message, 'Quest Amount')
   },
   uamount: {
-    response: (message) => GlobalFunctions.getItemStat(message, 'Upgrade Amount')
+    response: (message) => getItemStat(message, 'Upgrade Amount')
   },
   camount: {
-    response: (message) => GlobalFunctions.getItemStat(message, 'Craft Amount')
+    response: (message) => getItemStat(message, 'Craft Amount')
   },
   famount: {
-    response: (message) => GlobalFunctions.getItemStat(message, 'Forge Amount')
+    response: (message) => getItemStat(message, 'Forge Amount')
   },
   info: {
-    response: (message) => GlobalFunctions.getItemStat(message, 'info')
+    response: (message) => getItemStat(message, 'info')
   },
   help: {
-    response: () => GlobalFunctions.getHelp()
+    response: () => getHelp()
   },
   botinfo: {
-    response: () => GlobalFunctions.getBotInfo()
+    response: () => getBotInfo()
   }
 }
 

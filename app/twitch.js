@@ -1,10 +1,6 @@
 require('dotenv').config()
 const tmi = require('tmi.js')
-const bot = require('./bot')
-// import tmi from 'tmi.js'
-// import { config } from 'dotenv'
-// import { bot } from './bot.js'
-// config()
+const COMMANDS = require('../utils/twitchcommands')
 
 const TwitchBot = () => {
   const twitchClient = new tmi.Client({
@@ -22,7 +18,18 @@ const TwitchBot = () => {
   twitchClient.connect().catch(console.error)
   twitchClient.on('message', (channel, userstate, message, self) => {
     if (self) return
-    else bot(twitchClient, channel, userstate, message)
+    const regExpCommand = new RegExp(/^!([a-zA-Z0-9]+)(?:\W+)?(.*)?/)
+    const formattedMessage = message.toLowerCase()
+
+    if (formattedMessage.match(regExpCommand)) {
+      const [raw, command, argument] = formattedMessage.match(regExpCommand)
+      const { response } = COMMANDS[command] || {}
+      
+      if (typeof response !== 'function') return 
+    
+      const returnString = `@${userstate.username}, ${response(argument)}`
+      return twitchClient.say(channel, returnString)
+    }
   })
 }
 
