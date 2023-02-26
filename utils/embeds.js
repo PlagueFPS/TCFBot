@@ -6,6 +6,10 @@ const date = new Date().toISOString()
 
 export const ItemEmbed = (item) => new EmbedBuilder()
   .setColor(COLORS[item.rarity])
+  .setAuthor({
+    name: 'The Cycle: Frontier Wiki',
+    iconURL: 'https://tracker.thecyclefrontier.wiki/images/wikilogowithtext.png'
+  })
   .setTitle(item.name)
   .setURL(`https://tracker.thecyclefrontier.wiki/item-info/${item._id}`)
   .setDescription(item.desc)
@@ -44,5 +48,5 @@ export const ItemEmbed = (item) => new EmbedBuilder()
   ])
   .setTimestamp(new Date(date))
   .setFooter({
-    text: 'Provided by PlagueFPS'
+    text: 'Provided by The Cycle: Frontier Wiki'
   })
