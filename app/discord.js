@@ -40,22 +40,21 @@ const DiscordBot = () => {
   discordClient.on('ready', () => {
     console.log(`Logged in as ${discordClient.user.tag}!`)
   })
-  
-  discordClient.on('messageCreate', async (message) => {
-    if (message.author.bot) return
-    else bot(discordClient, undefined, undefined, message.content, message)
-  })
 
   discordClient.on(Events.InteractionCreate, async (interaction) => {
     if (!interaction.isChatInputCommand()) return
     const command = interaction.client.commands.get(interaction.commandName)
+    const itemOption = interaction.options.get('item')
+    const argument = itemOption.value
+    const item = ItemsData.find(item => item._id === argument.toLowerCase())
 
     if (!command) {
       return console.error(`No command matching ${interaction.commandName} was found`)
     }
 
     try {
-      await command.execute(interaction)
+      if (item) await command.execute(interaction, item)
+      else await command.execute(interaction)
     }
     catch(error) {
       console.error(error)

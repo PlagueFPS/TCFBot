@@ -11,6 +11,6 @@ module.exports = {
           .setRequired(true)
       }),
     async execute(interaction, item) {
-      await interaction.reply({ embeds: ItemEmbed(item)})
+      await interaction.reply({ embeds: [ItemEmbed(item)]})
     },
 }
