@@ -38,7 +38,13 @@ const DiscordBot = () => {
     const command = interaction.client.commands.get(interaction.commandName)
     const itemOption = interaction.options.get('item')
     const argument = itemOption.value
-    const item = ItemsData.find(item => item._id === argument.toLowerCase())
+    const item = ItemsData.find(item => {
+      const newArgument = argument.split(' ')
+      const match = newArgument.some(argument => item._id.includes(argument))
+      if (item._id === argument.toLowerCase().replace(/\s/g, '')) return item
+      else if (match) return item
+      else return
+    })
 
     if (!command) {
       return console.error(`No command matching ${interaction.commandName} was found`)
