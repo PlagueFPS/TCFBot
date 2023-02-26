@@ -1,6 +1,6 @@
 import { REST, Routes } from "discord.js";
 import { config } from "dotenv";
-import { DISCORD_COMMANDS } from "./utils/discordcommands";
+import { DISCORD_COMMANDS } from "./utils/discordcommands.js";
 config()
 
 const commands = []
