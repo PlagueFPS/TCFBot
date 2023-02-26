@@ -1,13 +1,18 @@
-import ItemsData from '../data/items.json' assert { type: 'json' }
-import QuestsData from '../data/quests.json' assert { type: 'json' }
-import UpgradesData from '../data/upgrades.json' assert { type: 'json' }
-import CraftsData from '../data/crafts.json' assert { type: 'json' }
-import ForgeData from '../data/forge.json' assert { type: 'json' }
+const ItemsData = require('../data/items.json')
+const QuestsData = require('../data/quests.json')
+const UpgradesData = require('../data/upgrades.json')
+const CraftsData = require('../data/crafts.json')
+const ForgeData = require('../data/forge.json')
+// import ItemsData from '../data/items.json' assert { type: 'json' }
+// import QuestsData from '../data/quests.json' assert { type: 'json' }
+// import UpgradesData from '../data/upgrades.json' assert { type: 'json' }
+// import CraftsData from '../data/crafts.json' assert { type: 'json' }
+// import ForgeData from '../data/forge.json' assert { type: 'json' }
 
 const itemError = "Looks like that item doesn't exist. Please check the item name and try again"
 const botSite = "https://main--plaguetcfbot.netlify.app"
 
-export const calcRepPerWeight = (item) => {
+const calcRepPerWeight = (item) => {
   const repPerWeight = parseInt(item.rep) / parseInt(item.weight)
   return repPerWeight.toString()
 }
@@ -51,7 +56,7 @@ const itemAmountNeeded = (item, neededFor) => {
   return dataAmount.toString()
 }
 
-export const GlobalFunctions = {
+const GlobalFunctions = {
   getItemStat: (message, stat) => {
     const item = ItemsData.find(item => {
       const newMessage = message.split(' ')
@@ -117,3 +122,5 @@ export const GlobalFunctions = {
     return `You can find out how to add the bot to your channel/server here: ${botSite}`
   }
 }
+
+module.exports = GlobalFunctions

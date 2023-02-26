@@ -1,9 +1,12 @@
-import tmi from 'tmi.js'
-import { config } from 'dotenv'
-import { bot } from './bot.js'
-config()
+require('dotenv').config()
+const tmi = require('tmi.js')
+const bot = require('./bot')
+// import tmi from 'tmi.js'
+// import { config } from 'dotenv'
+// import { bot } from './bot.js'
+// config()
 
-export const TwitchBot = () => {
+const TwitchBot = () => {
   const twitchClient = new tmi.Client({
     options: { debug: true },
     connection: {
@@ -22,3 +25,5 @@ export const TwitchBot = () => {
     else bot(twitchClient, channel, userstate, message)
   })
 }
+
+module.exports = TwitchBot

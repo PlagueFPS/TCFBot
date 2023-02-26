@@ -1,6 +1,6 @@
-import { GlobalFunctions } from "../functions/GlobalFunctions.js"
+const { GlobalFunctions } = require('../functions/GlobalFunctions')
 
-export const COMMANDS = {
+const COMMANDS = {
   price: {
     response: (message) => GlobalFunctions.getItemStat(message, 'price')
   },
@@ -74,3 +74,5 @@ export const COMMANDS = {
     response: () => GlobalFunctions.getBotInfo()
   }
 }
+
+module.exports = COMMANDS

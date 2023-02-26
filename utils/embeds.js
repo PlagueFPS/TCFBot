@@ -1,10 +1,17 @@
-import { EmbedBuilder } from "discord.js";
-import { calcRepPerWeight } from "../functions/GlobalFunctions.js";
-import { COLORS } from "./colors.js";
+const { EmbedBuilder } = require('discord.js')
+const COLORS = require('./colors')
+// import { EmbedBuilder } from "discord.js";
+// import { calcRepPerWeight } from "../functions/GlobalFunctions.js";
+// import { COLORS } from "./colors.js";
 
 const date = new Date().toISOString()
 
-export const ItemEmbed = (item) => new EmbedBuilder()
+const calcRepPerWeight = (item) => {
+  const repPerWeight = parseInt(item.rep) / parseInt(item.weight)
+  return repPerWeight.toString()
+}
+
+const ItemEmbed = (item) => new EmbedBuilder()
   .setColor(COLORS[item.rarity])
   .setAuthor({
     name: 'The Cycle: Frontier Wiki',
@@ -17,7 +24,7 @@ export const ItemEmbed = (item) => new EmbedBuilder()
   .addFields([
     {
       name: 'Sell Price',
-      value: item.price,
+      value: item.price.replace(/\B(?=(\d{3})+(?!\d))/g,","),
       inline: true,
     },
     {
@@ -27,12 +34,12 @@ export const ItemEmbed = (item) => new EmbedBuilder()
     },
     {
       name: 'Faction Rep',
-      value: item.rep,
+      value: item.rep.replace(/\B(?=(\d{3})+(?!\d))/g,","),
       inline: true,
     },
     {
       name: 'Value/Weight',
-      value: item.valuePerWeight,
+      value: item.valuePerWeight.replace(/\B(?=(\d{3})+(?!\d))/g,","),
       inline: true,
     },
     {
@@ -50,3 +57,5 @@ export const ItemEmbed = (item) => new EmbedBuilder()
   .setFooter({
     text: 'Provided by The Cycle: Frontier Wiki'
   })
+
+  module.exports = ItemEmbed

@@ -1,4 +1,4 @@
-export const COLORS = {
+const COLORS = {
   common: [130, 154, 176],
   uncommon: [37, 187, 50],
   rare: [45, 135, 200],
@@ -6,3 +6,5 @@ export const COLORS = {
   exotic: [255, 0, 43],
   legendary: [255, 166, 0]
 }
+
+module.exports = COLORS

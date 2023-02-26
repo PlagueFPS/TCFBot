@@ -1,17 +1,20 @@
-import { REST, Routes } from "discord.js";
-import { config } from "dotenv";
-import { DISCORD_COMMANDS } from "./utils/discordcommands.js";
-config()
+require('dotenv').config()
+const fs = require('node:fs')
+const path = require('node:path')
+const { REST, Routes } = require("discord.js")
 
 const commands = []
+const commandPath = path.join(__dirname, 'commands')
+const commandFiles = fs.readdirSync(commandPath).filter(file => file.endsWith('.js'))
 
-for (const command of DISCORD_COMMANDS) {
+for (const file of commandFiles) {
+  const command = require(`./commands/${file}`)
   commands.push(command.data.toJSON())
 }
 
 const rest = new REST({ version: '10' }).setToken(process.env.DISCORD_TOKEN)
 
-(async () => {
+const deploy = async () => {
   try {
     console.log(`Started refreshing ${commands.length} application (/) commands`)
 
@@ -25,4 +28,6 @@ const rest = new REST({ version: '10' }).setToken(process.env.DISCORD_TOKEN)
   catch(error) {
     console.error(error)
   }
-})()
+}
+
+deploy()
