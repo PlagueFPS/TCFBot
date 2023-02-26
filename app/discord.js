@@ -2,7 +2,8 @@ require('dotenv').config()
 const fs = require('node:fs')
 const path = require('node:path')
 const { Client, Collection, Events, GatewayIntentBits } = require('discord.js')
-const ItemsData = require('../data/items.json')
+const getItemOption = require('../functions/getItemOption')
+const getLocationOption = require('../functions/getLocationOption')
 
 const DiscordBot = () => {
   const discordClient = new Client({
@@ -37,25 +38,18 @@ const DiscordBot = () => {
     if (!interaction.isChatInputCommand()) return
     const command = interaction.client.commands.get(interaction.commandName)
     let item
-    
-    if (interaction.options.get('item')) {
-      const itemOption = interaction.options.get('item')
-      const argument = itemOption.value
-      item = ItemsData.find(item => {
-        const newArgument = argument.split(' ')
-        const match = newArgument.some(argument => item._id.includes(argument))
-        if (item._id === argument.toLowerCase().replace(/\s/g, '')) return item
-        else if (match) return item
-        else return
-      })
-    }
+    let location
+
+    if (interaction.options.get('item')) item = getItemOption(interaction)
+    if (interaction.options.get('location')) location = getLocationOption(interaction)
 
     if (!command) {
       return console.error(`No command matching ${interaction.commandName} was found`)
     }
 
     try {
-      if (item) await command.execute(interaction, item)
+      if (item && location) await command.execute(interaction, item, location)
+      else if (item) await command.execute(interaction, item)
       else await command.execute(interaction)
     }
     catch(error) {
