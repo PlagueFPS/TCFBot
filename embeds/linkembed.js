@@ -4,7 +4,7 @@ const COLORS = require('../utils/colors')
 const date = new Date().toISOString()
 
 const LinkEmbed = (name, link) => new EmbedBuilder()
-  .setColor(COLORS[item.rarity])
+  .setColor(COLORS['legendary'])
   .setAuthor({
     name: 'The Cycle: Frontier Wiki',
     iconURL: 'https://tracker.thecyclefrontier.wiki/images/wikilogowithtext.png'

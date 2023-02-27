@@ -7,7 +7,7 @@ const getUpgrades = (item) => {
     const matchedUpgrade = Object.values(upgrade).includes(item._id)
 
     if (matchedUpgrade) newUpgrades.push(upgrade)
-    else return null
+    else return '\u200b'
   })
 
   return newUpgrades

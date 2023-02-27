@@ -20,16 +20,14 @@ const ItemAmountEmbed = (item, neededFor) => {
       .setThumbnail(`https://tracker.thecyclefrontier.wiki/images/${item._id}.png`)
       .addFields(
         {
-          name: 'Item Amount Needed',
+          name: 'Item Amount Needed:',
           value: itemAmountNeeded(item, 'quests')
         },
         {
           name: 'Quests:',
-          value: getQuests().map(quest => {
-            return  `
-              [${quest.name}](https://tracker.thecyclefrontier.wiki/quests/${quest.faction !== 'korolev' ? `${quest.faction}/${quest._id}` : quest._id })
-              `
-            })
+          value: `
+          [${getQuests(item)[0].name}](https://tracker.thecyclefrontier.wiki/quests/${getQuests(item)[0].faction !== 'korolev' ? `${getQuests(item)[0].faction}/${getQuests(item)[0]._id}` : getQuests(item)[0]._id })
+          `
         },
       )
       .setTimestamp(new Date(date))
@@ -48,16 +46,14 @@ const ItemAmountEmbed = (item, neededFor) => {
     .setThumbnail(`https://tracker.thecyclefrontier.wiki/images/${item._id}.png`)
     .addFields(
       {
-        name: 'Item Amount Needed',
+        name: 'Item Amount Needed:',
         value: itemAmountNeeded(item, 'upgrades')
       },
       {
         name: 'Upgrades:',
-        value: getUpgrades().map(upgrade => {
-          return  `
-            [${upgrade.name}](https://tracker.thecyclefrontier.wiki/upgrades/${upgrade.type !== 'Level' ? `${upgrade.type.toLowerCase()}/${upgrade._id}` : upgrade._id })
-            `
-          })
+        value: `
+        [${getUpgrades(item)[0].name}](https://tracker.thecyclefrontier.wiki/upgrades/${getUpgrades(item)[0].type !== 'Level' ? `${getUpgrades(item)[0].type.toLowerCase()}/${getUpgrades(item)[0]._id}` : getUpgrades(item)[0]._id })
+        `
       },
     )
     .setTimestamp(new Date(date))

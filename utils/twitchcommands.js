@@ -38,7 +38,7 @@ const COMMANDS = {
     response: () => renderLink('Official Wiki', 'https://thecyclefrontier.wiki/wiki/Main_Page')
   },
   map: {
-    response: () => renderLink('Wiki Interactive Map', 'https://tools.thecyclefrontier.wiki/map')
+    response: (message) => renderLink('Wiki Interactive Map', 'https://tools.thecyclefrontier.wiki/map', message)
   },
   tracker: {
     response: () => renderLink('Wiki Item Tracker', 'https://tracker.thecyclefrontier.wiki')

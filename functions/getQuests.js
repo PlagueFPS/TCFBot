@@ -10,7 +10,7 @@ const getQuests = (item) => {
       if (key.includes('taskitem') && value === item._id) {
         newQuests.push(quest)
       }
-      else return null
+      else return '\u200b'
     })
   })
 
