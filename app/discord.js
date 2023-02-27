@@ -63,7 +63,7 @@ const DiscordBot = () => {
     }
   })
   
-  discordClient.login(process.env.DISCORD_TEST_TOKEN)
+  discordClient.login(process.env.DISCORD_TOKEN)
 }
 
 module.exports = DiscordBot
