@@ -15,12 +15,12 @@ const MapEmbed = (item, location) => {
       .setThumbnail(`https://tracker.thecyclefrontier.wiki/images/${item._id}.png`)
       .addFields([
         {
-          name: `Search: ${item.name}`,
-          value: '\u200b'
+          name: `Search:`,
+          value: item.name
         },
         {
-          name: `Location: ${location}`,
-          value: '\u200b'
+          name: `Location:`,
+          value: location
         },
         {
           name: 'Results:',
