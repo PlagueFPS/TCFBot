@@ -58,12 +58,12 @@ const DiscordBot = () => {
         await interaction.followUp({ content: 'There was an error while executing this command!', ephemeral: true })
       }
       else {
-        await interaction.reply({ content: 'There was an error while executing this command!', ephemeral: true })
+        await interaction.reply({ content: 'There was an error while executing this command most likely due to no matches being found!', ephemeral: true })
       }
     }
   })
   
-  discordClient.login(process.env.DISCORD_TOKEN)
+  discordClient.login(process.env.DISCORD_TEST_TOKEN)
 }
 
 module.exports = DiscordBot

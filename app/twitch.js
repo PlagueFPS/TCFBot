@@ -10,10 +10,10 @@ const TwitchBot = () => {
       secure: true,
     },
     identity: {
-      username: process.env.BOT_USERNAME,
-      password: process.env.OAUTH_TOKEN,
+      username: process.env.TESTBOT_USERNAME,
+      password: process.env.TESTOAUTH_TOKEN,
     },
-    channels: ['plaguefps', 'k4rnivore']
+    channels: ['plaguefps']
   })
   twitchClient.connect().catch(console.error)
   twitchClient.on('message', (channel, userstate, message, self) => {
