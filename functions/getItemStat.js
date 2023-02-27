@@ -3,13 +3,17 @@ const itemAmountNeeded = require('../functions/itemAmountNeeded')
 const calcRepPerWeight = require('../functions/calcRepPerWeight')
 
 const getItemStat = (message, stat) => {
-  const item = ItemsData.find(item => {
+  let item = ItemsData.find(item => item._id === message.toLowerCase().replaceAll(/\s/g, ''))
+
+  if (!item) {
     const newMessage = message.split(' ')
-    const match = newMessage.some(message => item._id.includes(message))
-    if (message.replace(/\s/g, '').includes(item._id)) return item
-    else if (match) return item
-    else return
-  })
+    item = ItemsData.find(item => newMessage.every(message => item._id.includes(message)))
+  }
+
+  if (!item) {
+    const newMessage = message.split(' ')
+    item = ItemsData.find(item => newMessage.some(message => item._id.includes(message)))
+  }
   const tracker = item && `https://tracker.thecyclefrontier.wiki/item-info/${item._id}`
   const itemError = "Looks like that item doesn't exist. Please check the item name and try again"
 
