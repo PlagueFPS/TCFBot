@@ -49,11 +49,14 @@ const COMMANDS = {
   calc: {
     response: () => renderLink('Wiki Weapon Calculator', 'https://tools.thecyclefrontier.wiki/calculator')
   },
-  geo: {
+  guesser: {
     response: () => renderLink('Wiki Fortuna Guesser', 'https://fortunaguessr.com')
   },
   progress: {
     response: () => renderLink('Wiki Progress Tracker', 'https://tools.thecyclefrontier.wiki/progress')
+  },
+  timer: {
+    response: () => renderLink('Wiki Time Tracker', 'https://tools.thecyclefrontier.wiki/timer')
   },
   qamount: {
     response: (message) => getItemStat(message, 'Quest Amount')
