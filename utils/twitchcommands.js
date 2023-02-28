@@ -2,6 +2,7 @@ const getItemStat = require('../functions/getItemStat')
 const renderLink = require('../functions/renderLink')
 const getHelp = require('../functions/getHelp')
 const getBotInfo = require('../functions/getBotInfo')
+const joinChannel = require('../functions/joinChannel')
 
 const COMMANDS = {
   price: {
@@ -78,6 +79,9 @@ const COMMANDS = {
   },
   botinfo: {
     response: () => getBotInfo()
+  },
+  join: {
+    response: (message, client, user) => joinChannel(client, user)
   }
 }
 

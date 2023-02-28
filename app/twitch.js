@@ -1,8 +1,11 @@
 require('dotenv').config()
 const tmi = require('tmi.js')
+const getUsers = require('../functions/getUsers')
 const COMMANDS = require('../utils/twitchcommands')
 
-const TwitchBot = () => {
+const TwitchBot = async () => {
+  const channelData = await getUsers()
+  const channels = channelData.map(channel => channel.user)
   const twitchClient = new tmi.Client({
     options: { debug: true },
     connection: {
@@ -13,7 +16,7 @@ const TwitchBot = () => {
       username: process.env.BOT_USERNAME,
       password: process.env.OAUTH_TOKEN,
     },
-    channels: ['plaguefps', 'k4rnivore']
+    channels: ['plaguetcfbot', ...channels]
   })
   twitchClient.connect().catch(console.error)
   twitchClient.on('message', (channel, userstate, message, self) => {
@@ -27,7 +30,7 @@ const TwitchBot = () => {
       
       if (typeof response !== 'function') return 
     
-      const returnString = `@${userstate.username}, ${response(argument)}`
+      const returnString = `@${userstate.username}, ${response(argument, twitchClient, userstate)}`
       return twitchClient.say(channel, returnString)
     }
   })
