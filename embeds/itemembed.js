@@ -1,8 +1,7 @@
 const { EmbedBuilder } = require('discord.js')
 const COLORS = require('../utils/colors')
 const calcRepPerWeight = require('../functions/calcRepPerWeight')
-
-const date = new Date().toISOString()
+const date = require('../utils/date')
 
 const ItemEmbed = (item) => new EmbedBuilder()
   .setColor(COLORS[item.rarity])

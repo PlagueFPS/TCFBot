@@ -4,6 +4,7 @@ const path = require('node:path')
 const { Client, Collection, Events, GatewayIntentBits } = require('discord.js')
 const getItemOption = require('../functions/getItemOption')
 const getLocationOption = require('../functions/getLocationOption')
+const getQuestOption = require('../functions/getQuestOption')
 
 const DiscordBot = () => {
   const discordClient = new Client({
@@ -39,9 +40,11 @@ const DiscordBot = () => {
     const command = interaction.client.commands.get(interaction.commandName)
     let item
     let location
+    let quest
 
     if (interaction.options.get('item')) item = getItemOption(interaction)
     if (interaction.options.get('location')) location = getLocationOption(interaction)
+    if (interaction.options.get('quest')) quest = getQuestOption(interaction)
 
     if (!command) {
       return console.error(`No command matching ${interaction.commandName} was found`)
@@ -50,6 +53,7 @@ const DiscordBot = () => {
     try {
       if (item && location) await command.execute(interaction, item, location)
       else if (item) await command.execute(interaction, item)
+      else if (quest) await command.execute(interaction, quest)
       else await command.execute(interaction)
     }
     catch(error) {

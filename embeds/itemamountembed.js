@@ -5,8 +5,7 @@ const getUpgrades = require('../functions/getUpgrades')
 const getCrafts = require('../functions/getCrafts')
 const getForgeRecipes = require('../functions/getForgeRecipes')
 const itemAmountNeeded = require('../functions/itemAmountNeeded')
-
-const date = new Date().toISOString()
+const date = require('../utils/date')
 
 const ItemAmountEmbed = (item, neededFor) => {
   const questValues = getQuests(item).map(quest => {

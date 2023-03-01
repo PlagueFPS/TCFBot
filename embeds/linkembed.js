@@ -1,7 +1,6 @@
 const { EmbedBuilder } = require('discord.js')
 const COLORS = require('../utils/colors')
-
-const date = new Date().toISOString()
+const date = require('../utils/date')
 
 const LinkEmbed = (name, link) => new EmbedBuilder()
   .setColor(COLORS['legendary'])
