@@ -3,6 +3,7 @@ const renderLink = require('../functions/renderLink')
 const getHelp = require('../functions/getHelp')
 const getBotInfo = require('../functions/getBotInfo')
 const joinChannel = require('../functions/joinChannel')
+const leaveChannel = require('../functions/leaveChannel')
 
 const COMMANDS = {
   price: {
@@ -82,6 +83,9 @@ const COMMANDS = {
   },
   join: {
     response: (message, client, user) => joinChannel(client, user)
+  },
+  removetcfbot: {
+    response: (message, client, user) => leaveChannel(client, user)
   }
 }
 
