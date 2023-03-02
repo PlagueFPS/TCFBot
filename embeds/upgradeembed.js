@@ -43,17 +43,19 @@ const UpgradeEmbed = (upgrade) => {
       name: 'The Cycle: Frontier Wiki',
       iconURL: 'https://tracker.thecyclefrontier.wiki/images/wikilogowithtext.png'
     })
-    .setTitle(upgrade.name)
+    .setTitle(`${upgrade.tier ? `${upgrade.name} - ${upgrade.tier}` : upgrade.name }`)
     .setURL(`https://tracker.thecyclefrontier.wiki${url}`)
     .setThumbnail(`https://tracker.thecyclefrontier.wiki/images/${image}`)
     .addFields([
       {
         name: 'Type:',
-        value: upgrade.type
+        value: upgrade.type,
+        inline: true,
       },
       {
         name: 'Tier:',
-        value: `${upgrade.tier ? upgrade.tier : 'none'}`
+        value: `${upgrade.tier ? upgrade.tier : 'none'}`,
+        inline: true,
       },
       {
         name: `${upgrade.type === 'Level' ? 'Upgrades Required:' : 'PQ Level Required:'}`,

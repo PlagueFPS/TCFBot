@@ -6,6 +6,7 @@ const getItemOption = require('../functions/getItemOption')
 const getLocationOption = require('../functions/getLocationOption')
 const getQuestOption = require('../functions/getQuestOption')
 const getUpgradeOption = require('../functions/getUpgradeOption')
+const getCraftOption = require('../functions/getCraftOption')
 
 const DiscordBot = () => {
   const discordClient = new Client({
@@ -43,11 +44,13 @@ const DiscordBot = () => {
     let location
     let quest
     let upgrade
+    let craft
 
     if (interaction.options.get('item')) item = getItemOption(interaction)
     if (interaction.options.get('location')) location = getLocationOption(interaction)
     if (interaction.options.get('quest')) quest = getQuestOption(interaction)
     if (interaction.options.get('upgrade')) upgrade = getUpgradeOption(interaction)
+    if (interaction.options.get('craft')) craft = getCraftOption(interaction)
 
     if (!command) {
       return console.error(`No command matching ${interaction.commandName} was found`)
@@ -58,6 +61,7 @@ const DiscordBot = () => {
       else if (item) await command.execute(interaction, item)
       else if (quest) await command.execute(interaction, quest)
       else if (upgrade) await command.execute(interaction, upgrade)
+      else if (craft) await command.execute(interaction, craft)
       else await command.execute(interaction)
     }
     catch(error) {
