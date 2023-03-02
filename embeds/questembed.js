@@ -32,6 +32,7 @@ const QuestEmbed = (quest) => {
   if (quest.reward5) rewardItems.push(`${quest.reward5amount.replace(/\B(?=(\d{3})+(?!\d))/g,",")} ${quest.reward5}`)
 
   const rewardValues = rewardItems.join('\n')
+  const faction = quest.faction.split(' ').map(value => value[0].toUpperCase() + value.substring(1)).join(' ')
 
   return new EmbedBuilder()
     .setColor(COLORS[quest.faction])
@@ -43,6 +44,10 @@ const QuestEmbed = (quest) => {
     .setURL(`https://tracker.thecyclefrontier.wiki${url}`)
     .setThumbnail(`https://tracker.thecyclefrontier.wiki/images/${quest.faction}reputation.png`)
     .addFields([
+      {
+        name: 'Faction:',
+        value: faction
+      },
       {
         name: 'Tasks:',
         value: tasksValues

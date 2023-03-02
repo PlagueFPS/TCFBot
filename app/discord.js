@@ -5,6 +5,7 @@ const { Client, Collection, Events, GatewayIntentBits } = require('discord.js')
 const getItemOption = require('../functions/getItemOption')
 const getLocationOption = require('../functions/getLocationOption')
 const getQuestOption = require('../functions/getQuestOption')
+const getUpgradeOption = require('../functions/getUpgradeOption')
 
 const DiscordBot = () => {
   const discordClient = new Client({
@@ -41,10 +42,12 @@ const DiscordBot = () => {
     let item
     let location
     let quest
+    let upgrade
 
     if (interaction.options.get('item')) item = getItemOption(interaction)
     if (interaction.options.get('location')) location = getLocationOption(interaction)
     if (interaction.options.get('quest')) quest = getQuestOption(interaction)
+    if (interaction.options.get('upgrade')) upgrade = getUpgradeOption(interaction)
 
     if (!command) {
       return console.error(`No command matching ${interaction.commandName} was found`)
@@ -54,6 +57,7 @@ const DiscordBot = () => {
       if (item && location) await command.execute(interaction, item, location)
       else if (item) await command.execute(interaction, item)
       else if (quest) await command.execute(interaction, quest)
+      else if (upgrade) await command.execute(interaction, upgrade)
       else await command.execute(interaction)
     }
     catch(error) {
