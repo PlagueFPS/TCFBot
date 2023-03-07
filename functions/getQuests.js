@@ -7,7 +7,7 @@ const getQuests = (item) => {
     const entries = Object.entries(quest)
     entries.map(entry => {
       const [key, value] = entry
-      if (key.includes('taskitem') && value === item._id) {
+      if (key.includes('taskitem') && value.toLowerCase().replaceAll(/\s/g, '') === item._id) {
         newQuests.push(quest)
       }
       else return '\u200b'
