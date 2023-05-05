@@ -30,7 +30,7 @@ const itemAmountNeeded = (item, neededFor) => {
     entries.map((entry, index) => {
       const [key, value] = entry
 
-      if (key.includes(searchString) && value.toLowerCase().replaceAll(/\s/g, '') === item._id) {
+      if (key.includes(searchString) && value === item.name) {
         const newIndex = index + 1
         const [newKey, newValue] = entries[newIndex]
 

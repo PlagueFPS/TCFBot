@@ -11,6 +11,9 @@ const ItemAmountEmbed = (item, neededFor) => {
   const questValues = getQuests(item).map(quest => {
     let url = `/quests/${quest._id}`
     switch(quest.faction) {
+      case 'korolev':
+        url = `/quests/korolev/${quest._id}`
+        break
       case 'ica': 
         url = `/quests/ica/${quest._id}`
         break

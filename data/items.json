@@ -1120,5 +1120,38 @@
     "weight": "5",
     "rep": "5",
     "valuePerWeight": "101"
+  },
+  {
+    "_id": "howlerdart",
+    "name": "Howler Dart",
+    "longDesc": "One of the deadly projectiles Howlers use to skewer prey from a distance. This one was still not fully formed and can be harvested for useful materials. Worth some coin to the right people.",
+    "desc": "Can be obtained from dead howlers",
+    "rarity": "epic",
+    "price": "11533",
+    "weight": "5",
+    "rep": "115",
+    "valuePerWeight": "2306"
+  },
+  {
+    "_id": "damagedhowlersyrinx",
+    "name": "Damaged Howler Syrinx",
+    "longDesc": "Effectively the 'vocal cords' that Howlers use to emit their iconic screams. Reaches a high price on the station.",
+    "desc": "Can be obtained from dead howlers",
+    "rarity": "legendary",
+    "price": "103797",
+    "weight": "5",
+    "rep": "1038",
+    "valuePerWeight": "20759"
+  },
+  {
+    "_id": "howlerichorbulb",
+    "name": "Howler Ichor Bulb",
+    "longDesc": "An encased glob of Howler 'honey', the sticky substance the creatures use to affect other creatures, and as sustenance for their young. It's been found to be highly nutritious, sweet, and have almost mythical regenerative properties. Of course, it's also extremely addictive with a lethal withdrawal.",
+    "desc": "Can be obtained from dead howlers, and howler eggs",
+    "rarity": "rare",
+    "price": "2563",
+    "weight": "5",
+    "rep": "26",
+    "valuePerWeight": "512"
   }
 ]

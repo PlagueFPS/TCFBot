@@ -5,7 +5,7 @@ const getForgeRecipes = (item) => {
 
   ForgeData.map(forge => {
     if (forge._id !== item._id) {
-      const matchedRecipe = Object.values(forge).toLowerCase().replaceAll(/\s/g, '').includes(item._id)
+      const matchedRecipe = Object.values(forge).includes(item.name)
 
       if (matchedRecipe) newRecipes.push(forge)
       else return '\u200b'
