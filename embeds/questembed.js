@@ -49,6 +49,10 @@ const QuestEmbed = (quest) => {
         value: faction
       },
       {
+        name: 'Part:',
+        value: quest.part
+      },
+      {
         name: 'Tasks:',
         value: tasksValues
       },

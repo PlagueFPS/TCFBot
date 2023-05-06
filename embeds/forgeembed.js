@@ -71,7 +71,7 @@ const ForgeEmbed = (forge) => {
         value: `${forge.maximumstat ? forge.maximumstat : 'none'}`,
       },
       {
-        name: 'Costs:',
+        name: 'Compatible Items:',
         value: costsValues
       }
     ])

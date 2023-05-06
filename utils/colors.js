@@ -5,6 +5,7 @@ const COLORS = {
   epic: [178, 83, 178],
   exotic: [255, 0, 43],
   legendary: [255, 166, 0],
+  badum: [178, 83, 178],
   korolev: [255, 166, 0],
   ica: [45, 135, 200],
   osiris: [37, 187, 50],
