@@ -8,7 +8,7 @@ const MapEmbed = (item, location) => {
       .setColor(COLORS['legendary'])
       .setAuthor({
         name: 'The Cycle: Frontier Wiki',
-        iconURL: 'https://tracker.thecyclefrontier.wiki/images/wikilogowithtext.png'
+        iconURL: 'https://tracker.thecyclefrontier.wiki/images/favicon.png'
       })
       .setTitle('Interactive Map')
       .setThumbnail(`https://tracker.thecyclefrontier.wiki/images/${item._id}.png`)

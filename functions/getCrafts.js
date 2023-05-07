@@ -10,7 +10,7 @@ const getCrafts = (item) => {
     else return '\u200b'
   })
 
-  return newRecipes
+  return [...new Set(newRecipes)]
 }
 
 module.exports = getCrafts

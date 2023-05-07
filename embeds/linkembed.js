@@ -6,7 +6,7 @@ const LinkEmbed = (name, link) => new EmbedBuilder()
   .setColor(COLORS['legendary'])
   .setAuthor({
     name: 'The Cycle: Frontier Wiki',
-    iconURL: 'https://tracker.thecyclefrontier.wiki/images/wikilogowithtext.png'
+    iconURL: 'https://tracker.thecyclefrontier.wiki/images/favicon.png'
   })
   .setTitle(name)
   .setURL(link)

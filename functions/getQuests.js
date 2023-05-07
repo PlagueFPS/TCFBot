@@ -14,7 +14,7 @@ const getQuests = (item) => {
     })
   })
 
-  return newQuests
+  return [...new Set(newQuests)]
 }
 
 module.exports = getQuests

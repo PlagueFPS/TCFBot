@@ -12,7 +12,7 @@ const getForgeRecipes = (item) => {
     }
   })
 
-  return newRecipes
+  return [...new Set(newRecipes)]
 }
 
 module.exports = getForgeRecipes

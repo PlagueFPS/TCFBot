@@ -47,6 +47,7 @@ const DiscordBot = () => {
     let upgrade
     let craft
     let forge
+    let weapon
 
     if (interaction.options.get('item')) item = getItemOption(interaction)
     if (interaction.options.get('location')) location = getLocationOption(interaction)
@@ -54,6 +55,7 @@ const DiscordBot = () => {
     if (interaction.options.get('upgrade')) upgrade = getUpgradeOption(interaction)
     if (interaction.options.get('craft')) craft = getCraftOption(interaction)
     if (interaction.options.get('recipe')) forge = getForgeOption(interaction)
+    if (interaction.options.get('weapon')) weapon = interaction.options.get('weapon')
 
     if (!command) {
       return console.error(`No command matching ${interaction.commandName} was found`)
@@ -66,6 +68,7 @@ const DiscordBot = () => {
       else if (upgrade) await command.execute(interaction, upgrade)
       else if (craft) await command.execute(interaction, craft)
       else if (forge) await command.execute(interaction, forge)
+      else if (weapon) await command.execute(interaction, weapon)
       else await command.execute(interaction)
     }
     catch(error) {
@@ -74,7 +77,7 @@ const DiscordBot = () => {
         await interaction.followUp({ content: 'There was an error while executing this command!', ephemeral: true })
       }
       else {
-        await interaction.reply({ content: 'There was an error while executing this command most likely due to no matches being found!', ephemeral: true })
+        await interaction.reply({ content: 'There was an error while executing this command most likely due to no matches being found or too many matches being found to show!', ephemeral: true })
       }
     }
   })

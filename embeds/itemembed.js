@@ -10,7 +10,7 @@ const ItemEmbed = (item) => {
     .setColor(COLORS[item.rarity])
     .setAuthor({
       name: 'The Cycle: Frontier Wiki',
-      iconURL: 'https://tracker.thecyclefrontier.wiki/images/wikilogowithtext.png'
+      iconURL: 'https://tracker.thecyclefrontier.wiki/images/favicon.png'
     })
     .setTitle(item.name)
     .setURL(`https://tracker.thecyclefrontier.wiki/item-info/${item._id}`)

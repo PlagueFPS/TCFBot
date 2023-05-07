@@ -41,7 +41,7 @@ const UpgradeEmbed = (upgrade) => {
     .setColor(COLORS['legendary'])
     .setAuthor({
       name: 'The Cycle: Frontier Wiki',
-      iconURL: 'https://tracker.thecyclefrontier.wiki/images/wikilogowithtext.png'
+      iconURL: 'https://tracker.thecyclefrontier.wiki/images/favicon.png'
     })
     .setTitle(`${upgrade.tier ? `${upgrade.name} - ${upgrade.tier}` : upgrade.name }`)
     .setURL(`https://tracker.thecyclefrontier.wiki${url}`)

@@ -7,7 +7,7 @@ const getForgeRecipes = require('../functions/getForgeRecipes')
 const itemAmountNeeded = require('../functions/itemAmountNeeded')
 const date = require('../utils/date')
 
-const ItemAmountEmbed = (item, neededFor) => {
+const ItemAmountEmbed = (item) => {
   const questValues = getQuests(item).map(quest => {
     let url = `/quests/${quest._id}`
     switch(quest.faction) {
@@ -71,109 +71,58 @@ const ItemAmountEmbed = (item, neededFor) => {
 
     return `[${forge.name}](https://tracker.thecyclefrontier.wiki${url})`
   })
-  const questValue = questValues.join('\n')
-  const upgradeValue = upgradeValues.join('\n')
-  const craftValue = craftValues.join('\n')
-  const forgeValue = forgeValues.join('\n')
+  const questValue = questValues.join('\n').length >= 1024 ? 'Too Many Matches!' : questValues.join('\n')
+  const upgradeValue = upgradeValues.join('\n').length >= 1024 ? 'Too Many Matches!' : upgradeValues.join('\n')
+  const craftValue = craftValues.join('\n').length >= 1024 ? 'Too Many Matches!' : craftValues.join('\n')
+  const forgeValue = forgeValues.join('\n').length >= 1024 ? 'Too Many Matches!' : forgeValues.join('\n')
 
-  switch(neededFor) {
-    default:
-      return new EmbedBuilder()
-      .setColor(COLORS[item.rarity])
-      .setAuthor({
-        name: 'The Cycle: Frontier Wiki',
-        iconURL: 'https://tracker.thecyclefrontier.wiki/images/wikilogowithtext.png'
-      })
-      .setTitle(item.name)
-      .setURL(`https://tracker.thecyclefrontier.wiki/item-info/${item._id}`)
-      .setThumbnail(`https://tracker.thecyclefrontier.wiki/images/${item._id}.png`)
-      .addFields(
-        {
-          name: 'Amount Needed For Quests:',
-          value: itemAmountNeeded(item, 'quests')
-        },
-        {
-          name: 'Quests:',
-          value: questValue
-        },
-      )
-      .setTimestamp(new Date(date))
-      .setFooter({
-        text: 'Provided by The Cycle: Frontier Wiki'
-      })
-    case 'upgrades':
-      return new EmbedBuilder()
-      .setColor(COLORS[item.rarity])
-      .setAuthor({
-        name: 'The Cycle: Frontier Wiki',
-        iconURL: 'https://tracker.thecyclefrontier.wiki/images/wikilogowithtext.png'
-      })
-      .setTitle(item.name)
-      .setURL(`https://tracker.thecyclefrontier.wiki/item-info/${item._id}`)
-      .setThumbnail(`https://tracker.thecyclefrontier.wiki/images/${item._id}.png`)
-      .addFields(
-        {
-          name: 'Amount Needed For Upgrades:',
-          value: itemAmountNeeded(item, 'upgrades')
-        },
-        {
-          name: 'Upgrades:',
-          value: upgradeValue
-        },
-      )
-      .setTimestamp(new Date(date))
-      .setFooter({
-        text: 'Provided by The Cycle: Frontier Wiki'
-      })
-    case 'crafts': 
-      return new EmbedBuilder()
-      .setColor(COLORS[item.rarity])
-      .setAuthor({
-        name: 'The Cycle: Frontier Wiki',
-        iconURL: 'https://tracker.thecyclefrontier.wiki/images/wikilogowithtext.png'
-      })
-      .setTitle(item.name)
-      .setURL(`https://tracker.thecyclefrontier.wiki/item-info/${item._id}`)
-      .setThumbnail(`https://tracker.thecyclefrontier.wiki/images/${item._id}.png`)
-      .addFields(
-        {
-          name: 'Amount Needed For Crafts:',
-          value: itemAmountNeeded(item, 'crafts')
-        },
-        {
-          name: 'Crafts:',
-          value: craftValue
-        },
-      )
-      .setTimestamp(new Date(date))
-      .setFooter({
-        text: 'Provided by The Cycle: Frontier Wiki'
-      })
-    case 'forge':
-      return new EmbedBuilder()
-      .setColor(COLORS[item.rarity])
-      .setAuthor({
-        name: 'The Cycle: Frontier Wiki',
-        iconURL: 'https://tracker.thecyclefrontier.wiki/images/wikilogowithtext.png'
-      })
-      .setTitle(item.name)
-      .setURL(`https://tracker.thecyclefrontier.wiki/item-info/${item._id}`)
-      .setThumbnail(`https://tracker.thecyclefrontier.wiki/images/${item._id}.png`)
-      .addFields(
-        {
-          name: 'Amount Needed For Forge Recipes:',
-          value: itemAmountNeeded(item, 'forge')
-        },
-        {
-          name: 'Forge Recipes:',
-          value: forgeValue
-        },
-      )
-      .setTimestamp(new Date(date))
-      .setFooter({
-        text: 'Provided by The Cycle: Frontier Wiki'
-      })
-  }
+  return new EmbedBuilder()
+    .setColor(COLORS[item.rarity])
+    .setAuthor({
+      name: 'The Cycle: Frontier Wiki',
+      iconURL: 'https://tracker.thecyclefrontier.wiki/images/favicon.png'
+    })
+    .setTitle(item.name)
+    .setURL(`https://tracker.thecyclefrontier.wiki/item-info/${item._id}`)
+    .setThumbnail(`https://tracker.thecyclefrontier.wiki/images/${item._id}.png`)
+    .addFields(
+      {
+        name: 'Amount Needed For Quests:',
+        value: itemAmountNeeded(item, 'quests'),
+      },
+      {
+        name: 'Quests:',
+        value: `${questValue ? questValue : 'none'}`,
+      },
+      {
+        name: 'Amount Needed For Upgrades',
+        value: itemAmountNeeded(item, 'upgrades'),
+      },
+      {
+        name: 'Upgrades:',
+        value: `${upgradeValue ? upgradeValue : 'none'}`,
+      },
+      {
+        name: 'Amount Needed For Crafts:',
+        value: itemAmountNeeded(item, 'crafts'),
+      },
+      {
+        name: 'Crafts:',
+        value: `${craftValue ? craftValue : 'none'}`,
+      },
+      {
+        name: 'Amount Needed For Forge Recipes:',
+        value: itemAmountNeeded(item, 'forge'),
+      },
+      {
+        name: 'Forge Recipes:',
+        value: `${forgeValue ? forgeValue : 'none'}`,
+      }
+    )
+    .setTimestamp(new Date(date))
+    .setFooter({
+      text: 'Provided by The Cycle: Frontier Wiki'
+    })
 }
 
   module.exports = ItemAmountEmbed

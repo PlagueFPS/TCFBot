@@ -10,7 +10,7 @@ const getUpgrades = (item) => {
     else return '\u200b'
   })
 
-  return newUpgrades
+  return [...new Set(newUpgrades)]
 }
 
 module.exports = getUpgrades

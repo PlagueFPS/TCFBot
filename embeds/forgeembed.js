@@ -32,7 +32,7 @@ const ForgeEmbed = (forge) => {
     .setColor(forge.rarity ? COLORS[forge.rarity] : COLORS['legendary'])
     .setAuthor({
       name: 'The Cycle: Frontier Wiki',
-      iconURL: 'https://tracker.thecyclefrontier.wiki/images/wikilogowithtext.png'
+      iconURL: 'https://tracker.thecyclefrontier.wiki/images/favicon.png'
     })
     .setTitle(forge.name)
     .setURL(`https://tracker.thecyclefrontier.wiki${url}`)

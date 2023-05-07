@@ -38,7 +38,7 @@ const QuestEmbed = (quest) => {
     .setColor(COLORS[quest.faction])
     .setAuthor({
       name: 'The Cycle: Frontier Wiki',
-      iconURL: 'https://tracker.thecyclefrontier.wiki/images/wikilogowithtext.png'
+      iconURL: 'https://tracker.thecyclefrontier.wiki/images/favicon.png'
     })
     .setTitle(quest.name)
     .setURL(`https://tracker.thecyclefrontier.wiki${url}`)
