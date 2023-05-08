@@ -2,12 +2,12 @@ require('dotenv').config()
 const fs = require('node:fs')
 const path = require('node:path')
 const { Client, Collection, Events, GatewayIntentBits } = require('discord.js')
-const getItemOption = require('../functions/getItemOption')
-const getLocationOption = require('../functions/getLocationOption')
-const getQuestOption = require('../functions/getQuestOption')
-const getUpgradeOption = require('../functions/getUpgradeOption')
-const getCraftOption = require('../functions/getCraftOption')
-const getForgeOption = require('../functions/getForgeOption')
+const getItemOption = require('./functions/getItemOption')
+const getLocationOption = require('./functions/getLocationOption')
+const getQuestOption = require('./functions/getQuestOption')
+const getUpgradeOption = require('./functions/getUpgradeOption')
+const getCraftOption = require('./functions/getCraftOption')
+const getForgeOption = require('./functions/getForgeOption')
 
 const DiscordBot = () => {
   const discordClient = new Client({
